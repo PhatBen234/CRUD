@@ -1,7 +1,14 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const Product = require("./models/product.model.js");
+const productRoute = require("./routes/product.route.js");
+//middleware
+app.use(express.json());
+//routes
+app.use("/api/products", productRoute);
 
+//Home
 app.get("/", (req, res) => {
   res.send("Hello World from Node API Server");
 });
